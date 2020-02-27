@@ -1,0 +1,62 @@
+﻿@page
+@model CapgeminiElections.DemNewsModel
+@using System.Net;
+@using NewsAPI;
+@using NewsAPI.Models;
+@using NewsAPI.Constants;
+@using System;
+
+
+
+
+
+@{
+    var newsApiClient = new NewsApiClient("04f808b8f62c44128f9fc4b59b735497");
+    var articlesResponse = newsApiClient.GetTopHeadlines(new TopHeadlinesRequest
+    {
+        Q = "Trump",
+        //SortBy = SortBys.Popularity,
+        Language = Languages.EN,
+        //From = new DateTime(2018, 1, 25),
+        Sources = new List<string> { "bbc" , "cnn" }
+
+    });
+
+
+}
+
+
+
+
+<body>
+    <div class="table-responsive" style="width:auto">
+        <table class="table">
+            <thead class="thead-dark" style="display:table-header-group">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Published On</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (articlesResponse.Status == Statuses.Ok)
+                {
+
+                    @foreach (var article in articlesResponse.Articles)
+                    {
+
+                        <tr>
+                            <td><img src="@article.UrlToImage" height="100" width="100" /></td>
+                            <th scope="row"><a target="_blank" href=@article.Url> @article.Title</a></th>
+                            <td>@article.Author</td>
+                            <td>@article.PublishedAt</td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</body>

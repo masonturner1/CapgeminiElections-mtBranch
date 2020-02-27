@@ -1,0 +1,101 @@
+﻿@page
+@model CapgeminiElections.Pages.FederalModel
+@{
+    ViewData["Title"] = "Federal/State";
+}
+
+
+
+
+    <head>
+        <title>Federal Elections!</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <style>
+            h1 {
+                position: absolute;
+                bottom: 0%;
+                margin: 0;
+                font-size: 40px;
+                color: red;
+                z-index: 2;
+                line-height: 83px;
+
+            }
+            .box {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                height: 10%;
+                width: 100%;
+                top: 75%;
+                padding: 5px;
+            }
+
+                .box::after {
+                    content: "";
+                    background-color: red;
+                    opacity: 0.25;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+            .body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+                .body div {
+                    width: 75%;
+                }
+        </style>
+</head >
+    <body>
+        <div class="box">
+            <form method="post">
+
+                <div class="body">
+                    <h1>Google Civic Information API to implemented in CSCE 492!</h1>
+                </div>
+            </form>
+        </div>
+        <table class="table">
+            <thead class="thead-dark" style="display:table-header-group">
+                <tr>
+                    <th scope="col"> Date</th>
+                    <th scope="col"> Candidates</th>
+                    <th scope="col"> Description</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td> 10/01/2019</td>
+                    <td> Bob vs. John</td>
+                    <td s> Election for Presidency</td>
+                </tr>
+                <tr>
+                    <td> 11/11/2019</td>
+                    <td> Amendment 15</td>
+                    <td> Amendment for the legalization of crack cocaine in the state of SC</td>
+                </tr>
+                <tr>
+                    <td> 02/16/2020</td>
+                    <td> Brexit</td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td> 02/17/2020</td>
+                    <td> Steve vs. Frank</td>
+                    <td> South Carolina State Rep</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </body>

@@ -1,0 +1,65 @@
+@page
+@model CapgeminiElections.LocalModel
+@using System.Net;
+@using System;
+@using Microsoft.AspNetCore.Identity
+@using CapgeminiElections.Areas.Identity.Data
+@using System.Security.Principal
+@using Google.Apis.CivicInfo.v2;
+@using Google.Apis.CivicInfo;
+@using Google.Apis.Discovery;
+@using RestSharp;
+@using Newtonsoft.Json;
+@using Newtonsoft.Json.Linq;
+
+
+@{
+    var newRestClient = new RestClient("https://www.googleapis.com/civicinfo/v2/voterinfo?key=AIzaSyC5gPKYzW0NsMEG-AmIqdAw7iduV8RTfF0&address=1263%20Pacific%20Ave.%20Kansas%20City%20KS&electionId=2000");
+
+    var request = new RestRequest(Method.GET);
+
+    IRestResponse response = newRestClient.Execute(request); //<List<ElectionsResource>>
+
+    Console.WriteLine(response.Content);
+
+    var data = response.RawBytes;
+
+    //  var myJsonString = BitConverter.ToString(data);
+
+    //  var it = JObject.Parse(myJsonString);
+
+    //  var it = new LocalModel.ElectionQueryRequest();
+}
+
+
+
+
+<body>
+    <div class="table-responsive" style="width:auto">
+        <table class="table">
+            <thead class="thead-dark" style="display:table-header-group">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Published On</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <th scope="row"><@response.Content>@response.Content</th>
+                </tr>
+
+                @if (response.ResponseStatus == ResponseStatus.Completed)
+                {
+                    <tr>
+                        <th scope="row"><@data>@response</th>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</body>
